@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+
+.center {
+    padding: 0 calc(50% - 600px);
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 70px;
+    background: aqua;
+}
+
+.header__basket {
+    padding: 7px;
+    cursor: pointer;
+    background-color:cadetblue;
+    border: none;
+    border-radius: 100px;
+}
+
+.products-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.product-item {
+    max-width: 200px;
+    padding: 5px;
+    border: 1px solid black
+}
+
+.product-item__image {
+    width: 100%;
+    display: block;
+}
+
+.product-item__title {
+    margin: 0;
+    text-align: center;
+}
+
+.product-item__price {
+    text-align: center;
+}
+
+.product-item__book {
+    display: block;
+    margin: 0 auto;
+}
