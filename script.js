@@ -4,6 +4,8 @@ class ProductList{
     constructor(container = '.products-block') {
         this.container = container;
         this.goods = [];
+        this.filtered = [];
+        this._init();
         this._getProducts()
             .then(data => {
                 this.goods = data;
@@ -26,12 +28,32 @@ class ProductList{
         }
 
     }
+
+    filter(value) {
+        let regExp = new RegExp(value, 'i');
+        this.filtered = this.goods.filter(item => regExp.test(item.product_name));
+        this.goods.forEach(item => {
+            let good = document.querySelector(`.product-item[id="${item.id}"]`);
+            if(!this.filtered.includes(item)) {
+                good.classList.add('invisible');
+            } else {
+                good.classList.remove('invisible');
+            }
+        })
+    }
     calcTotalSum() {
         let totalSum = 0;
         for (let product of this.goods) {
             totalSum = totalSum + product.price;        
         }
         console.log(totalSum);
+    }
+
+    _init() {
+        document.querySelector('.search-form').addEventListener('submit', element => {
+            element.preventDefault();
+            this.filter(document.querySelector('.search-fieled').value);
+        })
     }
 }
 
@@ -44,7 +66,7 @@ class ProductItem {
         
     }
     renderItem() {
-        return  `<div class="product-item" id="${this.id_product}">
+        return  `<div class="product-item" id="${this.id}">
                     <image class="product-item__image" src="${this.img}"></image>
                     <h3 class="product-item__title">${this.product_name}</h3>
                     <p class="product-item__price">${this.price}</p>

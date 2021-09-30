@@ -15,6 +15,7 @@ body {
 }
 
 .header__basket-button {
+    margin-left: 10px;
     padding: 7px;
     cursor: pointer;
     background-color:cadetblue;
@@ -32,9 +33,6 @@ body {
     background-color:beige;
 }
 
-.invisible {
-    display: none;
-}
 
 .basket-item {
     display: flex;
@@ -104,4 +102,8 @@ body {
 .product-item__book {
     display: block;
     margin: 0 auto;
+}
+
+.invisible {
+    display: none;
 }
