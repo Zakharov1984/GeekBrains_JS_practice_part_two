@@ -33,7 +33,7 @@ class ProductList{
         let regExp = new RegExp(value, 'i');
         this.filtered = this.goods.filter(item => regExp.test(item.product_name));
         this.goods.forEach(item => {
-            let good = document.querySelector(`.product-item[id="${item.id}"]`);
+            let good = document.querySelector(`.product-item[id="${item.id_product}"]`);
             if(!this.filtered.includes(item)) {
                 good.classList.add('invisible');
             } else {
