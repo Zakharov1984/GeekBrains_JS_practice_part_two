@@ -15,18 +15,25 @@ body {
 }
 
 .header__basket-button {
-    margin-left: 10px;
+    margin-left: 35px;
     padding: 7px;
     cursor: pointer;
     background-color:cadetblue;
     border: none;
 }
 
+.header__basket-button:hover {
+    background-color:slategray;
+}
+
+.wrapper-basket {
+    position: relative;
+}
+
 .basket-box {
     position: absolute;
+    right:0;
     display: block;
-    right: 167px;
-    top: 50px;
     padding: 5px;
     width: 200px;
     border: 1px solid black;
@@ -68,6 +75,31 @@ body {
     text-align: left;
     margin: 5px 0 0;
 }
+
+.search-form {
+    margin-top: 10px;
+    font-size: 0;
+}
+
+.search-fieled {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: aqua;
+
+}
+
+.search-fieled:focus {
+    outline: none;
+    
+}
+
+.btn-search {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: aqua;
+    cursor: pointer;
+}
+
 
 .products-block {
     display: flex;
