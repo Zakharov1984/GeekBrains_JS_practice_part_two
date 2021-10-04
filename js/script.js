@@ -1,6 +1,90 @@
 let API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-class ProductList{
+let app = new Vue({
+    el: '#app',
+    data: {
+        catalogUrl: '/catalogData.json',
+        products: [],
+        filtered: [],
+        imgCatalog: 'img/image.jpg',
+        userSearch: '',
+        show: false,
+        counter: 0,
+    },
+    methods: {
+        getJsonItems(url) {
+            return fetch(url)
+                .then(result => result.json())
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        renderItemBasket(item, img = `img/image.jpg`) {
+            return `<div class="basket-item " id="${item.id_product}">
+                    <image class="basket-item__image" src="${img}"></image>
+                    <div class="basket-item__info-item">
+                        <h3 class="basket-item__title">${item.product_name}</h3>
+                        <p class="basket-item__price">$${item.price} each</p>
+                        <p class="basket-item__quantity">quantity: <span>${this. counter}</span></p>
+                    </div>
+                </div>`
+        },
+        getAddItemToCart(item) {
+                document.querySelector('.basket-box').insertAdjacentHTML('beforeend', this.renderItemBasket(item));
+            
+        },
+        filter() {
+            const regexp = new RegExp(this.userSearch, 'i');
+            this.filtered = this.products.filter(product => regexp.test(product.product_name));
+            this.products.forEach(item => {
+                let good = document.querySelector(`.product-item[id="${item.id_product}"]`);
+                if(!this.filtered.includes(item)) {
+                    good.classList.add('invisible');
+                } else {
+                    good.classList.remove('invisible');
+                }
+            })
+        },
+    },
+    mounted() {
+        this.getJsonItems(API + this.catalogUrl)
+            .then(data => {
+                /* for(let el of data) {
+                    this.products.push(el);
+                } */
+                this.products = data;
+            })
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* class ProductList{
     constructor(container = '.products-block') {
         this.container = container;
         this.goods = [];
@@ -75,7 +159,7 @@ class ProductItem {
     }
 }
 
-class BasketGoods{
+class BasketGoods{ -----------------------------------------------------------------------------------------------
     constructor(container = '.basket-box') {
         this.container = container;
         this.goods = [];
@@ -130,13 +214,13 @@ class ElementBasketGoods{
     }
     renderItemBasket() {
         return `<div class="basket-item " id="${this.id}">
-            <image class="basket-item__image" src="${this.img}"></image>
-            <div class="basket-item__info-item">
-                <h3 class="basket-item__title">${this.product_name}</h3>
-                <p class="basket-item__price">$${this.price} each</p>
-                <p class="basket-item__quantity">quantity: <span>${this.quantity}</span></p>
-            </div>
-        </div>`
+                    <image class="basket-item__image" src="${this.img}"></image>
+                    <div class="basket-item__info-item">
+                        <h3 class="basket-item__title">${this.product_name}</h3>
+                        <p class="basket-item__price">$${this.price} each</p>
+                        <p class="basket-item__quantity">quantity: <span>${this.quantity}</span></p>
+                    </div>
+                </div>`
     }
 }
 
@@ -144,3 +228,4 @@ let list = new ProductList();
 console.log(list);
 let basketList = new BasketGoods();
 console.log(basketList);
+ */

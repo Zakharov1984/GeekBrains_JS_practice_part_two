@@ -6,27 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header center">
-        <form action="#" class ="search-form">
-            <input type="text" class="search-fieled">
-            <button type="submit" class="btn-search">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-        <div class="wrapper-basket">
-            <button class="header__basket-button">Корзина</button>
-            <div class="basket-box invisible">              
-    
-            </div>
-        </div>
-    </header>
-    <section class="products-block center">
+   <div id="app">
+        <header class="header center">
+            <form action="#" class ="search-form" v-on:submit.prevent="onSubmit">
+                <input type="text" class="search-fieled" v-model="userSearch">
+                <button type="submit" class="btn-search"  @click="filter()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div class="wrapper-basket">
+                <button class="header__basket-button" @click="show=!show">Корзина</button>
+                <div class="basket-box" v-show="show">              
 
-    </section>
-    <script src="script.js"></script>
-    <script src="stringReplace.js"></script>
+                </div>
+            </div>
+        </header>
+        <section class="products-block center">
+            <div class="product-item" v-for="product of products" :id="product.id_product" :key="product.id_product">
+                <image class="product-item__image" :src="imgCatalog"></image>
+                <h3 class="product-item__title">{{ product.product_name }}</h3>
+                <p class="product-item__price">{{ product.price }}</p>
+                <button class="product-item__book" @click="getAddItemToCart(product)">Заказать</button>
+            </div>
+        </section>
+   </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
