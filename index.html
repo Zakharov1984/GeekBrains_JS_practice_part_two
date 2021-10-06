@@ -18,22 +18,32 @@
                 </button>
             </form>
             <div class="wrapper-basket">
-                <button class="header__basket-button" @click="show=!show">Корзина</button>
+                <button class="header__basket-button" @click="show = !show">Корзина</button>
                 <div class="basket-box" v-show="show">              
-
+                    <p v-if="!basketItems.length">Basket is empty</p>
+                    <div class="basket-item" v-for="item of basketItems" :key="item.id_product" :id="item.id_product">
+                        <div class="basket-item__left-block">
+                            <image class="basket-item__image" :src="imgCatalog"></image>
+                            <div class="basket-item__info-item">
+                                <h3 class="basket-item__title">{{ item.product_name }}</h3>
+                                <p class="basket-item__price">${{ item.price }} each</p>
+                                <p class="basket-item__quantity">quantity: <span>{{ item.quantity }}</span></p>
+                            </div>
+                        </div>
+                        <div class="basket-item__right-block">
+                            <div class="total-amount">{{ item.quantity * item.price }}</div>
+                            <button class="del-item" @click="remove(item)"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
-        <section class="products-block center">
-            <div class="product-item" v-for="product of products" :id="product.id_product" :key="product.id_product">
-                <image class="product-item__image" :src="imgCatalog"></image>
-                <h3 class="product-item__title">{{ product.product_name }}</h3>
-                <p class="product-item__price">{{ product.price }}</p>
-                <button class="product-item__book" @click="getAddItemToCart(product)">Заказать</button>
-            </div>
-        </section>
+        <goods :goods="filtered" :img="imgCatalog" @add-product="getAddItemToCar"></goods>
    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/ItemComponent.js"></script>
+    <script src="js/ItemBasketComponent.js"></script>
+    <script src="js/filterComponent.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
