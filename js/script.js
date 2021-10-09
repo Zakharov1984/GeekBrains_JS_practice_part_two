@@ -32,8 +32,8 @@ let app = new Vue({
                     }
                 })
         },
-        filter() {
-            const regexp = new RegExp(this.userSearch, 'i');
+        filter(userSearch) {
+            const regexp = new RegExp(userSearch, 'i');
             this.filtered = this.products.filter(product => regexp.test(product.product_name));
         },
         remove(item) {
@@ -60,10 +60,11 @@ let app = new Vue({
                 //this.filtered = data;
             });
         this.getJson(API + this.catalogBasketUrl)
-            .then(data => this.basketItems = data.contents);
+            .then(data => {
+                this.basketItems = data.contents});
 
     }
-}) 
+}); 
 
 
 

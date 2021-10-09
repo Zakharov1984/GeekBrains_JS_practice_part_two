@@ -10,9 +10,11 @@ Vue.component('goods', {
 Vue.component('good', {
     props: ['good', 'img'],
     template: `<div class="product-item">
-                    <image class="product-item__image" :src="img"></image>
+                    <img class="product-item__image" :src="img">
                     <h3 class="product-item__title">{{ good.product_name }}</h3>
                     <p class="product-item__price">{{ good.price }}</p>
-                    <button class="product-item__book" @click="$parent.$emit('add-product', good)>Заказать</button>
+                    <button class="product-item__book" @click="$parent.$emit('add-product', good)">Заказать</button> 
                 </div>`
 });
+
+// $root.getAddItemToCart(good)
