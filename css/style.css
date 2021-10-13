@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+}
+
+.center {
+    padding: 0 calc(50% - 600px);
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 70px;
+    background: aqua;
+}
+
+.header__basket-button {
+    margin-left: 35px;
+    padding: 7px;
+    cursor: pointer;
+    background-color:cadetblue;
+    border: none;
+}
+
+.header__basket-button:hover {
+    background-color:slategray;
+}
+
+.wrapper-basket {
+    position: relative;
+}
+
+.basket-box {
+    position: absolute;
+    right:0;
+    display: block;
+    padding: 5px;
+    min-width: 200px;
+    border: 1px solid black;
+    background-color:beige;
+}
+
+
+.basket-item {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.basket-item__left-block {
+    display: flex;
+}
+
+.basket-item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.basket-item__image {
+    height: 100px;
+    width: 50px;
+    margin-right: 5px;
+
+}
+
+.basket-item__title {
+    margin: 0 0 5px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 13px;
+
+}
+
+.basket-item__price {
+    margin: 6px 0 0;
+    text-align: left;
+    font-size: 13px;
+}
+
+.basket-item__quantity {
+    text-align: left;
+    margin: 1px 0 0;
+}
+
+.basket-item__right-block {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.del-item {
+    padding: 4px 17px;
+    margin-top: 9px;
+}
+
+.search-form {
+    margin-top: 10px;
+    font-size: 0;
+}
+
+.search-fieled {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: aqua;
+
+}
+
+.search-fieled:focus {
+    outline: none;
+    
+}
+
+.btn-search {
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+
+.products-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.product-item {
+    max-width: 200px;
+    padding: 5px;
+    border: 1px solid black;
+    
+}
+
+.product-item__image {
+    width: 100%;
+    display: block;
+}
+
+.product-item__title {
+    margin: 0;
+    text-align: center;
+}
+
+.product-item__price {
+    text-align: center;
+}
+
+.product-item__book {
+    display: block;
+    margin: 0 auto;
+}
+
+.invisible {
+    display: none;
+}

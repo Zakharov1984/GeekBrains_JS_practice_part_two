@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+        <header class="header center">
+            <search></search>
+            <div class="wrapper-basket">
+                <button class="header__basket-button" @click="show = !show">Корзина</button>
+                <basket :basketItems="basketItems" :img="imgCatalog" :visibility="show"></basket>
+            </div>
+        </header>
+        <goods :goods="filtered" :img="imgCatalog" @add-product="getAddItemToCart"></goods>
+   </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="js/ItemComponent.js"></script>
+    <script src="js/ItemBasketComponent.js"></script>
+    <script src="js/filterComponent.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
